@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-title>Add task</ion-title>
+    <!-- <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+    </ion-buttons> -->
+    <ion-buttons slot="end">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-list>
+    <!-- Task Title -->
+    <ion-item>
+      <ion-label position="stacked">Task Title</ion-label>
+      <ion-input type="text" placeholder="Enter task title" [(ngModel)]="taskObj.title" required></ion-input>
+    </ion-item>
+
+    <!-- Task Description -->
+    <ion-item>
+      <ion-label position="stacked">Task Description</ion-label>
+      <ion-textarea placeholder="Enter task description" [(ngModel)]="taskObj.description"></ion-textarea>
+    </ion-item>
+
+    <!-- Due Date -->
+    <ion-item>
+      <ion-label position="stacked">Due Date</ion-label>
+      <ion-datetime [min]="minDate" display-format="MM/DD/YYYY" placeholder="Select due date"
+        [(ngModel)]="taskObj.date"></ion-datetime>
+    </ion-item>
+
+    <!-- Priority -->
+    <ion-item>
+      <ion-label position="stacked">Priority</ion-label>
+      <ion-select placeholder="Select priority" [(ngModel)]="taskObj.priority">
+        <ion-select-option value="Low">Low</ion-select-option>
+        <ion-select-option value="Medium" selected>Medium</ion-select-option>
+        <ion-select-option value="High">High</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Category -->
+    <ion-item>
+      <ion-label position="stacked">Category</ion-label>
+      <ion-select placeholder="Select category" [(ngModel)]="taskObj.category">
+        <ion-select-option value="Work">Work</ion-select-option>
+        <ion-select-option value="Personal">Personal</ion-select-option>
+        <ion-select-option value="Other">Other</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <input type="file" name="TaskImg" id="taskImg" (change)="onFileSelected($event)">
+    <ion-img [src]="taskObj.downloadedPhoto"></ion-img>
+
+    <!-- Add Task Button -->
+    <ion-button expand="full" color="primary" (click)="addTask()">Add Task</ion-button>
+  </ion-list>
+</ion-content>

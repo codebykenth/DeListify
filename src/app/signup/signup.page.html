@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title size="large" class="ion-padding">DeListify</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="login()" class="ion-padding" color="light">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-text color="light" class="ion-text-center">
+    <h1>Sign Up</h1>
+  </ion-text>
+  <ion-item>
+    <ion-input label="Email" labelPlacement="floating" type="text" [(ngModel)]="email"></ion-input>
+    <ion-icon slot="end" name="mail"></ion-icon>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Password" labelPlacement="floating" type="password" [(ngModel)]="password"></ion-input>
+    <ion-icon slot="end" name="lock-closed"></ion-icon>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Re-Enter Password" labelPlacement="floating" type="password"
+      [(ngModel)]="reEnterPassword"></ion-input>
+    <ion-icon slot="end" name="lock-closed"></ion-icon>
+  </ion-item>
+  <ion-button (click)="signup()" expand="block" shape="round" class="ion-margin-vertical">
+    Sign Up
+  </ion-button>
+
+</ion-content>

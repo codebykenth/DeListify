@@ -1,0 +1,54 @@
+<!-- <ion-header [translucent]="true" >
+  <ion-toolbar>
+    <ion-title>signin</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title size="large" class="ion-padding ion-text-center">DeListify</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-text color="light" class="ion-text-center">
+    <h1>Login</h1>
+  </ion-text>
+
+  <ion-item>
+    <ion-input label="Email" labelPlacement="floating" type="text" [(ngModel)]="email"></ion-input>
+    <ion-icon slot="end" name="mail"></ion-icon>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Password" labelPlacement="floating" type="password" [(ngModel)]="password"></ion-input>
+    <ion-icon slot="end" name="lock-closed"></ion-icon>
+  </ion-item>
+
+  <ion-button [disabled]="loginIsDisabled" (click)="login()" expand="block" shape="round" class="ion-margin-vertical">
+    {{ loginIsDisabled ? 'Retry in ' + countdown + 's' : 'Login' }}
+  </ion-button>
+  <ion-text color="light" class="ion-text-right">
+    <p button (click)="forgotPassword()" class="pointer"><u>Forgot Password?</u></p>
+  </ion-text>
+  <!-- <ion-button (click)="forgotPassword()" expand="block" shape="round">
+    Forgot Password
+  </ion-button>
+   <ion-button (click)="signup()" expand="block" fill="none" shape="round">
+      Create New Account
+    </ion-button> -->
+  <!-- <ion-text color="light" class="ion-text-center">
+    <p> or </p>
+  </ion-text>
+  <ion-button (click)="signInWithGoogle()" expand="block" color="light" shape="round" class="ion-margin-vertical">
+    <ion-icon slot="start" name="logo-google"></ion-icon>
+    Sign in with Google
+  </ion-button> -->
+  <!-- <ion-button (click)="signInWithFacebook()">
+      <ion-icon slot="icon-only" name="logo-facebook"></ion-icon>
+    </ion-button> -->
+  <ion-text color="light" class="ion-text-center">
+    <h6 class="mt-2">Don't have an account? <span button (click)="signup()"><u class="pointer">Sign Up</u></span></h6>
+  </ion-text>
+
+
+
+</ion-content>
