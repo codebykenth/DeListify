@@ -15,26 +15,29 @@
     <!-- Task Title -->
     <ion-item>
       <ion-label position="stacked">Task Title</ion-label>
-      <ion-input type="text" placeholder="Enter task title" [(ngModel)]="taskObj.title" required></ion-input>
+      <ion-input type="text" placeholder="Enter task title" [(ngModel)]="taskObj.title" name="title" required
+        #title="ngModel"></ion-input>
     </ion-item>
 
     <!-- Task Description -->
     <ion-item>
       <ion-label position="stacked">Task Description</ion-label>
-      <ion-textarea placeholder="Enter task description" [(ngModel)]="taskObj.description"></ion-textarea>
+      <ion-textarea placeholder="Enter task description" [(ngModel)]="taskObj.description" name="description" required
+        #description="ngModel"></ion-textarea>
     </ion-item>
 
     <!-- Due Date -->
     <ion-item>
       <ion-label position="stacked">Due Date</ion-label>
-      <ion-datetime [min]="minDate" display-format="MM/DD/YYYY" placeholder="Select due date"
-        [(ngModel)]="taskObj.date"></ion-datetime>
+      <ion-datetime [min]="minDate" display-format="MM/DD/YYYY" placeholder="Select due date" [(ngModel)]="taskObj.date"
+        name="date" required #date="ngModel"></ion-datetime>
     </ion-item>
 
     <!-- Priority -->
     <ion-item>
       <ion-label position="stacked">Priority</ion-label>
-      <ion-select placeholder="Select priority" [(ngModel)]="taskObj.priority">
+      <ion-select placeholder="Select priority" [(ngModel)]="taskObj.priority" name="priority" required
+        #priority="ngModel">
         <ion-select-option value="Low">Low</ion-select-option>
         <ion-select-option value="Medium" selected>Medium</ion-select-option>
         <ion-select-option value="High">High</ion-select-option>
@@ -44,9 +47,31 @@
     <!-- Category -->
     <ion-item>
       <ion-label position="stacked">Category</ion-label>
-      <ion-select placeholder="Select category" [(ngModel)]="taskObj.category">
+      <ion-select placeholder="Select category" [(ngModel)]="taskObj.category" name="category" required
+        #category="ngModel">
+        <ion-select-option value="All">All</ion-select-option>
         <ion-select-option value="Work">Work</ion-select-option>
         <ion-select-option value="Personal">Personal</ion-select-option>
+        <ion-select-option value="Health/Fitness">Health/Fitness</ion-select-option>
+        <ion-select-option value="Shopping">Shopping</ion-select-option>
+        <ion-select-option value="Home">Home</ion-select-option>
+        <ion-select-option value="Finance">Finance</ion-select-option>
+        <ion-select-option value="Education">Education</ion-select-option>
+        <ion-select-option value="Travel">Travel</ion-select-option>
+        <ion-select-option value="Hobbies">Hobbies</ion-select-option>
+        <ion-select-option value="Social">Social</ion-select-option>
+        <ion-select-option value="Errands">Errands</ion-select-option>
+        <ion-select-option value="Events">Events</ion-select-option>
+        <ion-select-option value="Goals">Goals</ion-select-option>
+        <ion-select-option value="Miscellaneous">Miscellaneous</ion-select-option>
+        <ion-select-option value="Family">Family</ion-select-option>
+        <ion-select-option value="Projects">Projects</ion-select-option>
+        <ion-select-option value="Maintenance">Maintenance</ion-select-option>
+        <ion-select-option value="Entertainment">Entertainment</ion-select-option>
+        <ion-select-option value="Volunteer">Volunteer</ion-select-option>
+        <ion-select-option value="Self-Care">Self-Care</ion-select-option>
+        <ion-select-option value="Pets">Pets</ion-select-option>
+        <ion-select-option value="Appointments">Appointments</ion-select-option>
         <ion-select-option value="Other">Other</ion-select-option>
       </ion-select>
     </ion-item>
@@ -55,6 +80,8 @@
     <ion-img [src]="taskObj.downloadedPhoto"></ion-img>
 
     <!-- Add Task Button -->
-    <ion-button expand="full" color="primary" (click)="addTask()">Add Task</ion-button>
+    <ion-button expand="full" color="primary"
+      [disabled]="!title.valid || !description.valid || !date.valid || !priority.valid || !category.valid"
+      (click)="addTask()">Add Task</ion-button>
   </ion-list>
 </ion-content>

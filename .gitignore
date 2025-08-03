@@ -69,11 +69,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/src/app/service/
-/src/model
-/src/environments/
-/src/app/component/add-task/add-task.component.ts
-/src/app/forgot-password/forgot-password.page.ts
-/src/app/home/home.page.ts
-/src/app/signin/signin.page.ts
-/src/app/signup/signup.page.ts
+/src/environments

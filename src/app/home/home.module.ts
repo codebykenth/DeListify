@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { AddTaskComponent } from '../component/add-task/add-task.component';
+import { EditTaskComponent } from '../component/edit-task/edit-task.component';
 
 
 @NgModule({
@@ -13,8 +14,9 @@ import { AddTaskComponent } from '../component/add-task/add-task.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+     
   ],
-  declarations: [HomePage, AddTaskComponent]
+  declarations: [HomePage, AddTaskComponent, EditTaskComponent]
 })
 export class HomePageModule { }

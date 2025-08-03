@@ -6,40 +6,63 @@
   </ion-toolbar>
 </ion-header> -->
 <ion-header>
-    <ion-toolbar>
-      <ion-title size="large" class="ion-padding">DeListify</ion-title>
-      <ion-buttons slot="end">
-        <ion-button (click)="logout()" class="ion-padding" shape="round">Logout
-          <ion-icon slot="start" name="log-out"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+  <ion-toolbar>
+    <ion-title size="large" class="ion-padding">DeListify</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()" class="ion-padding" shape="round">Logout
+        <ion-icon slot="start" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
 
-    </ion-toolbar>
+  </ion-toolbar>
 
 </ion-header>
 <ion-content class="ion-padding">
+  <div *ngIf="currentUser" class="user-info">
+    <div class="avatar-container">
+      <img [src]="currentUser.photoURL || 'assets/avatar-placeholder.png'" alt="Avatar" class="avatar-img" />
+    </div>
+    <div class="welcome-text">
+      <h2>Welcome,</h2>
+      <h1>{{ currentUser.displayName || currentUser.email }}</h1>
+    </div>
+  </div>
   <ion-searchbar placeholder="Search task" inputmode="decimal" type="decimal" (ionInput)="onSearchChange($event)"
-  [debounce]="250"></ion-searchbar>
+    [debounce]="250"></ion-searchbar>
 
   <ion-grid>
     <ion-row>
       <ion-col size="12" size-lg="3" size-md="4" size-sm="6" *ngFor="let task of filteredTasks">
-        <ion-card>
-
+        <ion-card (click)="openEditTaskModal(task)" class="pointer">
           <ion-card-header>
-            <ion-checkbox (ionChange)="checkComplete($event, task.id)">Complete</ion-checkbox>
-
-            <ion-card-title>{{task.title}}</ion-card-title>
+            <ion-card-title class="task-title">{{task.title}}</ion-card-title>
+            <ion-checkbox slot="end" [checked]="task.completed"
+              (ionChange)="checkComplete($event, task.id)"></ion-checkbox>
           </ion-card-header>
           <ion-card-content>
-            <ion-text color="light">
-              <p>Description: {{task.description}}</p>
-              <p>Due Date: {{task.date}}</p>
-              <p>Priority: {{task.priority}}</p>
-              <p>Category: {{task.category}}</p>
-              <p>Image</p>
-            </ion-text>
-            <ion-img [src]="task.imgUrl"></ion-img>
+            <div class="task-desc">{{task.description}}</div>
+            <div class="">
+              <div class="task-meta-row">
+                <div class="meta-label">Due Date</div>
+                <ion-badge color="primary">{{task.date | date:'MMM d, y'}}</ion-badge>
+              </div>
+              <div class="task-meta-row">
+                <div class="meta-label">Due Time</div>
+                <ion-badge color="secondary">{{ task.date | date:'shortTime' }}</ion-badge>
+              </div>
+              <div class="task-meta-row">
+                <div class="meta-label">Priority</div>
+                <ion-badge
+                  [color]="task.priority === 'High' ? 'danger' : (task.priority === 'Medium' ? 'warning' : 'success')">
+                  {{task.priority}}
+                </ion-badge>
+              </div>
+              <div class="task-meta-row">
+                <div class="meta-label">Category</div>
+                <ion-badge color="tertiary">{{task.category}}</ion-badge>
+              </div>
+            </div>
+            <ion-img *ngIf="task.imgUrl" [src]="task.imgUrl" class="task-img"></ion-img>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -52,7 +75,7 @@
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="addTask()">
+    <ion-fab-button (click)="openAddTaskModal()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
