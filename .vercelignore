@@ -1,0 +1,15 @@
+node_modules
+src
+e2e
+.git
+.gitignore
+*.log
+*.env
+coverage
+android
+ios
+*.zip
+*.tar
+*.tar.gz
+.vscode
+.idea
